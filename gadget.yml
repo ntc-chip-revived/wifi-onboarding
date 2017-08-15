@@ -1,0 +1,16 @@
+spec: "0.0"
+name: docker
+uuid: f7fcd186-0652-47b8-86c6-0614387d3adb
+type: docker
+onboot:
+- name: wifi-onboarding
+  uuid: 1051c7c8-dbf1-4bbc-8ae8-28e9abb31901
+  image: ""
+  directory: "."
+  net: "host"
+  readonly: false
+  command: []
+  binds: ['/var/run/dbus:/var/run/dbus']
+  capabilities: ["NET_ADMIN"]
+  devices: []
+services: []
