@@ -30,12 +30,12 @@ Request access point list:
 `curl -H 'Accept: application/json' http://192.168.84.1:8080/ap/list`
 <br>Protip: You can use any arbitrary address
 
-Response:
+Example Response:
 ```json
 [
   {
-    "Path": "/net/connman/service/wifi_a1b2c3d4e5f6_3217659510f9876657432_managed_none",
-    "Name": "MyNetwork",
+    "Path": "/net/connman/service/<example path>",
+    "Name": "<example SSID>",
     "Type": "wifi",
     "State": "idle",
     "Error": "",
@@ -48,7 +48,7 @@ Request a connection:
 
 `curl -X POST -H 'Accept: application/json' -F 'accessPointPath=<Path here>' -F 'accessPointPassKey=<Password here>' http://192.168.84.1:8080/ap/connect`
 
-Response:
+Example Response:
 
 ```go
 {
