@@ -1,7 +1,4 @@
-FROM scratch
-
-ADD http://dl-cdn.alpinelinux.org/alpine/v3.6/releases/armhf/alpine-minirootfs-3.6.2-armhf.tar.gz /
-#ADD qemu-arm-static /usr/bin/qemu-arm-static
+FROM arm32v6/alpine
 
 RUN cat /etc/issue && \
 \
