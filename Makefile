@@ -25,7 +25,6 @@ all: $(WIFI_CONNECT_SOURCES)
 	@GOOS=linux GOARCH=arm go build -o build/linux_arm/wifi-onboarding -ldflags="-s -w" -v \
 	-ldflags "-X main.viewLocation=$(WIFI_ONBOARDING_VIEW_LOCATION) -X main.staticLocation=$(WIFI_ONBOARDING_STATIC_LOCATION)" \
 	.
-	@./deploy.sh
 
 clean:
 	@echo "Cleaning"
