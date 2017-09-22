@@ -14,7 +14,7 @@ WIFI_ONBOARDING_STATIC_LOCATION=./static
 endif
 
 ifeq ($(strip $(WIFI_ONBOARDING_DEFAULT_PORT)),)
-WIFI_ONBOARDING_STATIC_LOCATION=:8080
+WIFI_ONBOARDING_DEFAULT_PORT=":8080"
 endif
 
 DEPENDS=\
@@ -23,6 +23,9 @@ DEPENDS=\
 
 all: $(WIFI_CONNECT_SOURCES)
 	@echo "Building Wifi-Connect"
+	@echo "View Location: $(WIFI_ONBOARDING_VIEW_LOCATION)"
+	@echo "Static Location: $(WIFI_ONBOARDING_STATIC_LOCATION)"
+	@echo "Default Port: $(WIFI_ONBOARDING_DEFAULT_PORT)"
 	@go build -o wifi-onboarding -ldflags="-s -w" -v \
 	-ldflags "-X main.defaultPort=$(WIFI_ONBOARDING_DEFAULT_PORT) -X main.viewLocation=$(WIFI_ONBOARDING_VIEW_LOCATION) -X main.staticLocation=$(WIFI_ONBOARDING_STATIC_LOCATION)" \
 	.
