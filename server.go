@@ -31,6 +31,7 @@ var credentialsChannel chan Credentials
 
 var viewLocation = "./view/*"
 var staticLocation = "./static"
+var defaultPort = ":8080"
 
 func initializeServer() error {
 	if serverInitialized {
@@ -57,7 +58,7 @@ func initializeServer() error {
 	initRoutes()
 
 	server = &http.Server{
-		Addr:    ":8080",
+		Addr:    defaultPort,
 		Handler: router,
 	}
 

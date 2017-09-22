@@ -13,6 +13,10 @@ ifeq ($(strip $(WIFI_ONBOARDING_STATIC_LOCATION)),)
 WIFI_ONBOARDING_STATIC_LOCATION=./static
 endif
 
+ifeq ($(strip $(WIFI_ONBOARDING_DEFAULT_PORT)),)
+WIFI_ONBOARDING_STATIC_LOCATION=:8080
+endif
+
 DEPENDS=\
 	github.com/gin-gonic/gin \
 	github.com/nextthingco/gonnman
@@ -20,10 +24,10 @@ DEPENDS=\
 all: $(WIFI_CONNECT_SOURCES)
 	@echo "Building Wifi-Connect"
 	@go build -o wifi-onboarding -ldflags="-s -w" -v \
-	-ldflags "-X main.viewLocation=$(WIFI_ONBOARDING_VIEW_LOCATION) -X main.staticLocation=$(WIFI_ONBOARDING_STATIC_LOCATION)" \
+	-ldflags "-X main.defaultPort=$(WIFI_ONBOARDING_DEFAULT_PORT) -X main.viewLocation=$(WIFI_ONBOARDING_VIEW_LOCATION) -X main.staticLocation=$(WIFI_ONBOARDING_STATIC_LOCATION)" \
 	.
 	@GOOS=linux GOARCH=arm go build -o build/linux_arm/wifi-onboarding -ldflags="-s -w" -v \
-	-ldflags "-X main.viewLocation=$(WIFI_ONBOARDING_VIEW_LOCATION) -X main.staticLocation=$(WIFI_ONBOARDING_STATIC_LOCATION)" \
+	-ldflags "-X main.defaultPort=$(WIFI_ONBOARDING_DEFAULT_PORT) -X main.viewLocation=$(WIFI_ONBOARDING_VIEW_LOCATION) -X main.staticLocation=$(WIFI_ONBOARDING_STATIC_LOCATION)" \
 	.
 
 clean:
